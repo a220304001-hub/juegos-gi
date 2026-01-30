@@ -7,18 +7,22 @@ def celsius_a_kelvin(c):
     return c + 273.15
 
 print("--- Conversor de Temperatura (Desde Celsius) ---")
-c = float(input("Ingresa los grados Celsius: "))
 
-print("\n¿A qué unidad deseas convertir?")
-print("1. Fahrenheit")
-print("2. Kelvin")
-opcion = input("Selecciona una opción (1 o 2): ")
+# --- MEJORA: Validación de datos ---
+try:
+    c = float(input("Ingresa los grados Celsius: "))
+    
+    print("\n¿A qué unidad deseas convertir?")
+    print("1. Fahrenheit")
+    print("2. Kelvin")
+    opcion = input("Selecciona una opción (1 o 2): ")
 
-if opcion == "1":
-    resultado = celsius_a_fahrenheit(c)
-    print(f"\n{c}°C equivalen a {resultado}°F")
-elif opcion == "2":
-    resultado = celsius_a_kelvin(c)
-    print(f"\n{c}°C equivalen a {resultado}K")
-else:
-    print("\nOpción no válida.")
+    if opcion == "1":
+        print(f"\n{c}°C equivalen a {celsius_a_fahrenheit(c)}°F")
+    elif opcion == "2":
+        print(f"\n{c}°C equivalen a {celsius_a_kelvin(c)}K")
+    else:
+        print("\nOpción no válida. Debes elegir 1 o 2.")
+
+except ValueError:
+    print("\nError: ¡Debes ingresar un número válido (ejemplo: 25.5)!")
